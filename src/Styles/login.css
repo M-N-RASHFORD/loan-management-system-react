@@ -41,6 +41,7 @@ form{
     margin: 7px;
     width: 150%;
     outline: none;
+    font-family: century gothic;
     transform: translateX(-20%);
 }
 input[type="submit"]{
