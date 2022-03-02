@@ -1,5 +1,6 @@
 import React from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { addDoc, getFirestore, collection } from 'firebase/firestore';
 import '../Styles/signup.css';
 
 const Signup = () => {
@@ -15,7 +16,13 @@ const Signup = () => {
     }
     const handleSignup = (event) => {
         event.preventDefault();
-
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, admin.email, admin.password).then((userCredential) => {
+            const _user = userCredential.user;
+            console.log('user created', _user.uid);
+        }).catch((e) => {
+            console.log('error occurred', e);
+        });
     }
     return (
         <div className="container-content">
@@ -28,13 +35,13 @@ const Signup = () => {
                 <form className="signup-form-content" onSubmit={handleSignup}>
                     <p style={{marginLeft: '20px'}}>Add admin from here</p>
                     <input type="text" name="fullnames" placeholder="Full names" onChange={handleChange} value={admin.fullnames}
-                        className="signup-input-content"
+                        className="signup-input-content" required
                     />
                     <input type="email" name="email" placeholder="Email" onChange={handleChange} value={admin.email}
-                        className="signup-input-content"
+                        className="signup-input-content" required
                     />
                     <input type="password" name="password" placeholder="Password" onChange={handleChange} value={admin.password}
-                        className="signup-input-content"
+                        className="signup-input-content" required
                     />
                     <input type="submit" value="Add admin"/>
                 </form>
