@@ -52,7 +52,7 @@ h2{
     background-color: #fff;
     outline: 0;
     width: 150%;
-    margin-left: 10px;
+    margin-left: 8%;
     font-family: century gothic;
 }
 input[type="submit"]{
@@ -64,5 +64,6 @@ input[type="submit"]{
     background-color: dodgerblue;
     pointer-events: stroke;
     cursor: pointer;
-    transform: translateX(2%);
+    transform: translateX(3.8%);
+    width: 157%;
 }

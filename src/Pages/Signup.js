@@ -26,7 +26,7 @@ const Signup = () => {
             </div>
             <div className="signup-form-content" style={{paddingBottom: '10%', transform: 'translateY(-13%)'}}>
                 <form className="signup-form-content" onSubmit={handleSignup}>
-                    <p>Add admin from here</p>
+                    <p style={{marginLeft: '20px'}}>Add admin from here</p>
                     <input type="text" name="fullnames" placeholder="Full names" onChange={handleChange} value={admin.fullnames}
                         className="signup-input-content"
                     />
