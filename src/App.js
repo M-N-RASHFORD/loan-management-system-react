@@ -4,12 +4,13 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Home from './Pages/Home';
 import Welcome from './Pages/Welcome';
+import AddLoans from './Pages/Loan_application_form';
 
 function App() {
   return (
     <Router>
         <Switch>
-            <Route exact path="/" component={Signup}/>
+            <Route exact path="/" component={AddLoans}/>
             <Route path="/login" component={Login}/>
             <Route path="/home/:email" component={Home}/>
             <Route path="/welcome/:name" component={Welcome}/>
