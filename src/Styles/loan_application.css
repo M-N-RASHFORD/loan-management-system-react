@@ -27,7 +27,8 @@
     opacity: 0.5;
     box-shadow: 2px 2px 2px 2px #000;
     margin-left: -15%;
-    padding-bottom: 5vh;
+    padding-bottom: 10vh;
+    margin-top: 3vh;
 }
 .application-input-content{
     border: 1px solid #ffffff;
@@ -46,8 +47,14 @@
 }
 p{
     color: #fff;
+    margin: 5px;
+    z-index: -1;
 }
 button[type="submit"]{
     background-color: #fff;
     color: #000;
+    z-index: -1;
+}
+form{
+    z-index: -1;
 }
