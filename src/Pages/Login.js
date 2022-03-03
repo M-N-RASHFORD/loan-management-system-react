@@ -27,7 +27,7 @@ class Login extends React.Component {
                         <input type="password" name="password" placeholder="Password" className="input-content"
                             onChange={this.handleChange} value={this.state.password}
                         />
-                        <input type="submit"  value="LOGIN"/>
+                        <input type="button"  value="LOGIN"/>
                         <p>contact any admin to sign you up.</p>
                         <p>Info@xxxbank.co.ug</p>
                     </form>

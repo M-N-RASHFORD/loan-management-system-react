@@ -3,7 +3,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'fir
 import { addDoc, getFirestore, collection } from 'firebase/firestore';
 import '../Styles/signup.css';
 
-const Signup = () => {
+const Signup = ({ history }) => {
     const [admin, setAdmin] = React.useState({
         fullnames: '',
         email: '',
@@ -14,8 +14,7 @@ const Signup = () => {
             ...admin, [event.target.name]: event.target.value
         });
     }
-    const handleSignup = (event) => {
-        event.preventDefault();
+    const handleSignup = () => {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, admin.email, admin.password).then((userCredential) => {
             const _user = userCredential.user;
@@ -25,6 +24,7 @@ const Signup = () => {
         });
     }
     return (
+        <div className="body">
         <div className="container-content">
             <div className="header">
                 <h2>Welcome to XXX bank</h2>
@@ -32,7 +32,16 @@ const Signup = () => {
                 <p>Add another admin from here</p>
             </div>
             <div className="signup-form-content" style={{paddingBottom: '10%', transform: 'translateY(-13%)'}}>
-                <form className="signup-form-content" onSubmit={handleSignup}>
+                <form className="signup-form-content" onSubmit={async (event) => {
+                    event.preventDefault();
+                    const database = getFirestore();
+                    const docRef = await addDoc(collection(database, 'administrators'), {
+                        names: admin.fullnames, email: admin.email
+                    });
+                    console.log('added admin to the administrators', docRef.id);
+                    handleSignup();
+                    history.push(`/welcome/${admin.fullnames}`);
+                }}>
                     <p style={{marginLeft: '20px'}}>Add admin from here</p>
                     <input type="text" name="fullnames" placeholder="Full names" onChange={handleChange} value={admin.fullnames}
                         className="signup-input-content" required
@@ -46,6 +55,7 @@ const Signup = () => {
                     <input type="submit" value="Add admin"/>
                 </form>
             </div>
+        </div>
         </div>
     );
 }
