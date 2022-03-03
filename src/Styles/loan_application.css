@@ -54,7 +54,11 @@ button[type="submit"]{
     background-color: #fff;
     color: #000;
     z-index: -1;
+    cursor: crosshair;
 }
 form{
     z-index: -1;
+}
+span{
+    color: #00ff00;
 }
